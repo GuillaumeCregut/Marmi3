@@ -3,14 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Add Your Recipe</title>
+        <title>
+            <?php if(!isset ($title)) : ?>
+            Add Your Recipe
+            <?php else : ?>
+                <?=$title ?>
+            <?php endif ?>
+        </title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
     </head>
     <body>
         <main class="container">
             <a href="/">Home</a>
-            <h1>Add Your Recipe</h1>
+            <h1>
+            <?php if(!isset ($title)) : ?>
+            Add Your Recipe
+            <?php else : ?>
+                <?=$title ?>
+            <?php endif ?>
+        </h1>
 
             <?php foreach ($errors as $error) : ?>
                 <p><?= $error ?></p>
@@ -25,6 +37,9 @@
                     <label for="description">Description</label>
                     <textarea id="description" name="description"><?= $recipe['description'] ?? '' ?></textarea>
                 </div>
+                <?php if(isset($recipe['id'])) : ?>
+                    <input type="hidden" name="id" value="<?=$recipe['id'] ?>">
+                <?php endif ?>
                 <button>Send</button>
             </form>
         </main>

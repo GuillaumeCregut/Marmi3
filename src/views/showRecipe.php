@@ -10,6 +10,8 @@
         <main class="container">
             <a href="/">Home</a>
             <h1><?= $recipe['title'] ?></h1>
+            <p><a href="/delete?id=<?=$recipe['id'] ?>">Supprimer</a></p>
+            <p><a href="/update?id=<?=$recipe['id'] ?>">Modifier</a></p>
             <p>
                 <?= $recipe['description'] ?>
             </p>
